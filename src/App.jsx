@@ -94,7 +94,7 @@ async function askClaude(systemPrompt, userMessage) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "x-api-key": "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",
+      "x-api-key": "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",
       "anthropic-version": "2023-06-01",
       "anthropic-dangerous-direct-browser-access": "true",
     },
