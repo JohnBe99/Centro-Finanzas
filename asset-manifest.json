@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/Centro-Finanzas/static/js/main.ddb2110f.js",
+    "main.js": "/Centro-Finanzas/static/js/main.b22df09e.js",
     "index.html": "/Centro-Finanzas/index.html",
-    "main.ddb2110f.js.map": "/Centro-Finanzas/static/js/main.ddb2110f.js.map"
+    "main.b22df09e.js.map": "/Centro-Finanzas/static/js/main.b22df09e.js.map"
   },
   "entrypoints": [
-    "static/js/main.ddb2110f.js"
+    "static/js/main.b22df09e.js"
   ]
 }
