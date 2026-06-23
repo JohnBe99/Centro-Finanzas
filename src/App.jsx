@@ -27,6 +27,146 @@ const today = () => {
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
 };
 const CATS = ["🍽️ Comida","🚌 Transporte","🏠 Hogar","💊 Salud","🎮 Ocio","👗 Ropa","💡 Servicios","📦 Otro"];
+
+// ── BANCO PRESETS — tasas Superfinanciera Colombia 2026 ───────────────────────
+// Estructura: banco -> lista de productos con tasa E.A.
+const BANK_CATALOG = {
+  "Bancolombia": [
+    { product: "Mastercard Clasica", rate: "24.3" },
+    { product: "Visa Clasica", rate: "24.3" },
+    { product: "Mastercard Joven", rate: "24.3" },
+    { product: "Mastercard Ideal", rate: "24.3" },
+    { product: "Mastercard Gold", rate: "24.3" },
+    { product: "Visa Gold", rate: "24.3" },
+    { product: "Mastercard Platinum", rate: "24.3" },
+    { product: "Visa Infinite", rate: "24.3" },
+    { product: "Mastercard Black", rate: "24.3" },
+    { product: "LifeMiles Avianca", rate: "24.3" },
+    { product: "Credito de libre inversion", rate: "16.5" },
+    { product: "Credito de consumo (otro)", rate: "18.0" },
+  ],
+  "Davivienda": [
+    { product: "Mastercard Clasica", rate: "16" },
+    { product: "Visa Clasica", rate: "16" },
+    { product: "Mastercard Gold", rate: "16" },
+    { product: "Visa Gold", rate: "16" },
+    { product: "Mastercard Black", rate: "16" },
+    { product: "Visa Signature", rate: "16" },
+    { product: "Diners Club", rate: "16" },
+    { product: "Credito de libre inversion", rate: "15.6" },
+    { product: "Credito de consumo (otro)", rate: "16.0" },
+  ],
+  "BBVA": [
+    { product: "Visa Aqua", rate: "28.14" },
+    { product: "Mastercard Standard", rate: "28.14" },
+    { product: "Mastercard Gold", rate: "28.14" },
+    { product: "Mastercard Platinum", rate: "28.14" },
+    { product: "Mastercard Black", rate: "28.14" },
+    { product: "Visa Congelada", rate: "28.14" },
+    { product: "Visa Clasica", rate: "28.14" },
+    { product: "Visa Oro", rate: "28.14" },
+    { product: "Visa Platinum", rate: "28.14" },
+    { product: "Visa Infinite", rate: "28.14" },
+    { product: "Visa Blue Diamond", rate: "28.14" },
+    { product: "Tarjeta Hereos BBVA", rate: "28.14" },
+    { product: "Credito de libre inversion", rate: "18.0" },
+    { product: "Credito de consumo (otro)", rate: "20.0" },
+  ],
+  "Banco de Bogota": [
+    { product: "Mastercard Clasica", rate: "24" },
+    { product: "Visa Clasica", rate: "24" },
+    { product: "Mastercard Gold", rate: "24" },
+    { product: "Mastercard Platinum", rate: "24" },
+    { product: "Visa Infinite", rate: "24" },
+    { product: "Credito de libre inversion", rate: "16.8" },
+    { product: "Credito de consumo (otro)", rate: "18.0" },
+  ],
+  "Banco de Occidente": [
+    { product: "Mastercard Clasica", rate: "23.9" },
+    { product: "Visa Clasica", rate: "23.9" },
+    { product: "Mastercard Gold", rate: "23.9" },
+    { product: "Mastercard Platinum", rate: "23.9" },
+    { product: "Credito de libre inversion", rate: "17.0" },
+    { product: "Credito de consumo (otro)", rate: "18.5" },
+  ],
+  "AV Villas": [
+    { product: "Mastercard Clasica", rate: "24.3" },
+    { product: "Visa Clasica", rate: "24.3" },
+    { product: "Mastercard Gold", rate: "24.3" },
+    { product: "Credito de libre inversion", rate: "15.8" },
+    { product: "Credito de consumo (otro)", rate: "17.5" },
+  ],
+  "Scotiabank Colpatria": [
+    { product: "Mastercard Clasica", rate: "24.3" },
+    { product: "Visa Clasica", rate: "24.3" },
+    { product: "Mastercard Gold", rate: "24.3" },
+    { product: "Mastercard Platinum", rate: "24.3" },
+    { product: "Credito de libre inversion", rate: "17.5" },
+    { product: "Credito de consumo (otro)", rate: "19.0" },
+  ],
+  "Nu Colombia": [
+    { product: "Tarjeta Nu (Mastercard)", rate: "23.6" },
+    { product: "Credito Nu", rate: "23.6" },
+  ],
+  "Falabella / CMR": [
+    { product: "CMR Visa Clasica", rate: "20.93" },
+    { product: "CMR Mastercard", rate: "20.93" },
+    { product: "CMR Gold", rate: "20.93" },
+    { product: "Credito Falabella", rate: "20.93" },
+  ],
+  "Itau Colombia": [
+    { product: "Mastercard Clasica", rate: "24.3" },
+    { product: "Mastercard Platinum", rate: "24.3" },
+    { product: "Visa Infinite", rate: "24.3" },
+    { product: "Credito de libre inversion", rate: "17.0" },
+    { product: "Credito de consumo (otro)", rate: "19.0" },
+  ],
+  "Banco Caja Social": [
+    { product: "Mastercard Clasica", rate: "23.4" },
+    { product: "Visa Clasica", rate: "23.4" },
+    { product: "Credito de libre inversion", rate: "17.5" },
+    { product: "Credito de consumo (otro)", rate: "18.5" },
+  ],
+  "Bancoomeva": [
+    { product: "Mastercard Clasica", rate: "23.9" },
+    { product: "Visa Clasica", rate: "23.9" },
+    { product: "Credito de libre inversion", rate: "17.0" },
+    { product: "Credito de consumo (otro)", rate: "18.0" },
+  ],
+  "Banco Coopcentral": [
+    { product: "Mastercard Clasica", rate: "18.37" },
+    { product: "Visa Clasica", rate: "18.37" },
+    { product: "Credito de libre inversion", rate: "16.0" },
+  ],
+  "RappiCard": [
+    { product: "Mastercard RappiCard", rate: "24.3" },
+  ],
+  "Nequi": [
+    { product: "Tarjeta Nequi Mastercard", rate: "24.3" },
+  ],
+  "Ban100": [
+    { product: "Mastercard Clasica", rate: "24.3" },
+    { product: "Credito de libre inversion", rate: "18.0" },
+  ],
+  "Juriscoop": [
+    { product: "Mastercard Clasica", rate: "23.4" },
+    { product: "Credito de libre inversion", rate: "17.0" },
+  ],
+  "Banco W": [
+    { product: "Mastercard Clasica", rate: "23.3" },
+    { product: "Credito de consumo (otro)", rate: "22.0" },
+  ],
+  "Otro banco / entidad": [
+    { product: "Tarjeta de credito (ingresar tasa manual)", rate: "" },
+    { product: "Credito de libre inversion (ingresar tasa manual)", rate: "" },
+    { product: "Credito de consumo (ingresar tasa manual)", rate: "" },
+    { product: "Credito vehiculo (ingresar tasa manual)", rate: "" },
+    { product: "Credito hipotecario (ingresar tasa manual)", rate: "" },
+    { product: "Deuda personal / familiar (ingresar tasa manual)", rate: "" },
+  ],
+};
+
+const BANK_NAMES = ["— Selecciona el banco —", ...Object.keys(BANK_CATALOG)];
 const MONTHS = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
 
 // ── LOGO ─────────────────────────────────────────────────────────────────────
@@ -92,12 +232,7 @@ const STRATEGIES = {
 async function askClaude(systemPrompt, userMessage) {
   const res = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "x-api-key": "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",
-      "anthropic-version": "2023-06-01",
-      "anthropic-dangerous-direct-browser-access": "true",
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       model: "claude-sonnet-4-6", max_tokens: 1000,
       system: systemPrompt,
@@ -232,8 +367,8 @@ export default function App() {
     { name: "Comida", amount: "" },
   ]);
   const [debts, setDebts] = useState([
-    { name: "Tarjeta Nu", balance: "", rate: "", minPayment: "" },
-    { name: "Tarjeta BBVA Aqua", balance: "", rate: "", minPayment: "" },
+    { name: "Tarjeta Nu", balance: "", rate: "", minPayment: "", selectedBank: "", selectedProduct: "" },
+    { name: "Tarjeta BBVA Aqua", balance: "", rate: "", minPayment: "", selectedBank: "", selectedProduct: "" },
   ]);
   const [expenses, setExpenses] = useState([]);
   const [newExp, setNewExp] = useState({ date: today(), desc: "", amount: "", cat: CATS[0] });
@@ -517,19 +652,44 @@ Responde en español, claro y directo, máximo 4 párrafos, consejos accionables
               <div style={{ fontWeight:700, marginBottom:14, color:T.red }}>💳 Deudas</div>
               {debts.map((d,i)=>(
                 <div key={i} style={{ background:T.surface, borderRadius:12, padding:14, marginBottom:12, border:`1px solid ${T.border}` }}>
+                  <div style={{ marginBottom:10 }}>
+                    <div style={{ fontSize:11, color:T.muted, marginBottom:5, letterSpacing:1, textTransform:"uppercase" }}>Banco o entidad</div>
+                    <select value={d.selectedBank||""} onChange={e=>{const bank=e.target.value; setDebts(db=>db.map((x,j)=>j===i?{...x,selectedBank:bank,selectedProduct:"",rate:""}:x));}}
+                      style={{ width:"100%", background:T.card, border:`1px solid ${T.border}`, borderRadius:10, padding:"9px 12px", color:T.text, fontFamily:"inherit", fontSize:13, outline:"none" }}>
+                      {BANK_NAMES.map(b=><option key={b} value={b}>{b}</option>)}
+                    </select>
+                  </div>
+                  {d.selectedBank && d.selectedBank !== "— Selecciona el banco —" && (
+                    <div style={{ marginBottom:10 }}>
+                      <div style={{ fontSize:11, color:T.muted, marginBottom:5, letterSpacing:1, textTransform:"uppercase" }}>Producto / Tarjeta</div>
+                      <select value={d.selectedProduct||""} onChange={e=>{
+                        const productName=e.target.value;
+                        const found=(BANK_CATALOG[d.selectedBank]||[]).find(p=>p.product===productName);
+                        setDebts(db=>db.map((x,j)=>j===i?{...x,selectedProduct:productName,name:`${d.selectedBank} — ${productName}`,rate:found?.rate||""}:x));
+                      }}
+                        style={{ width:"100%", background:T.card, border:`1px solid ${T.accent}44`, borderRadius:10, padding:"9px 12px", color:T.accent, fontFamily:"inherit", fontSize:13, outline:"none" }}>
+                        <option value="">— Selecciona el producto —</option>
+                        {(BANK_CATALOG[d.selectedBank]||[]).map(p=>(
+                          <option key={p.product} value={p.product}>{p.product}{p.rate?` — ${p.rate}% E.A.`:" — tasa manual"}</option>
+                        ))}
+                      </select>
+                      <div style={{ fontSize:10, color:T.muted, marginTop:4 }}>Nombre y tasa se autocompletan. Puedes editarlos abajo.</div>
+                    </div>
+                  )}
                   <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:10 }}>
                     <input value={d.name} onChange={e=>setDebts(db=>db.map((x,j)=>j===i?{...x,name:e.target.value}:x))}
-                      style={{ background:"transparent", border:"none", color:T.text, fontWeight:700, fontSize:14, fontFamily:"inherit", outline:"none", flex:1 }} />
-                    <Btn variant="danger" onClick={()=>setDebts(db=>db.filter((_,j)=>j!==i))} style={{ padding:"4px 10px", fontSize:11 }}>✕</Btn>
+                      placeholder="Nombre de la deuda (editable)"
+                      style={{ background:T.surface, border:`1px solid ${T.border}`, borderRadius:8, padding:"8px 10px", color:T.text, fontWeight:700, fontSize:13, fontFamily:"inherit", outline:"none", flex:1, marginRight:8 }} />
+                    <Btn variant="danger" onClick={()=>setDebts(db=>db.filter((_,j)=>j!==i))} style={{ padding:"8px 10px", fontSize:11, flexShrink:0 }}>Eliminar</Btn>
                   </div>
                   <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr 1fr", gap:10 }}>
-                    <MoneyInput label="Saldo" value={d.balance} onChange={v=>setDebts(db=>db.map((x,j)=>j===i?{...x,balance:v}:x))} />
-                    <RateInput label="Tasa E.A." value={d.rate} onChange={v=>setDebts(db=>db.map((x,j)=>j===i?{...x,rate:v}:x))} />
-                    <MoneyInput label="Cuota mín." value={d.minPayment} onChange={v=>setDebts(db=>db.map((x,j)=>j===i?{...x,minPayment:v}:x))} />
+                    <MoneyInput label="Saldo actual" value={d.balance} onChange={v=>setDebts(db=>db.map((x,j)=>j===i?{...x,balance:v}:x))} />
+                    <RateInput label="Tasa E.A. %" value={d.rate} onChange={v=>setDebts(db=>db.map((x,j)=>j===i?{...x,rate:v}:x))} />
+                    <MoneyInput label="Cuota minima" value={d.minPayment} onChange={v=>setDebts(db=>db.map((x,j)=>j===i?{...x,minPayment:v}:x))} />
                   </div>
                 </div>
               ))}
-              <Btn variant="ghost" onClick={()=>setDebts(db=>[...db,{name:"Nueva deuda",balance:"",rate:"",minPayment:""}])}>+ Agregar deuda</Btn>
+              <Btn variant="ghost" onClick={()=>setDebts(db=>[...db,{name:"",balance:"",rate:"",minPayment:"",selectedBank:"",selectedProduct:""}])}>+ Agregar deuda</Btn>
             </Card>
 
             {incomeN > 0 && (
